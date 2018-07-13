@@ -16,6 +16,7 @@ RUN apk add --no-cache \
     ca-certificates \
     coreutils \
     curl \
+    expect \
     gnupg \
     py3-qt5 \
     tor \
