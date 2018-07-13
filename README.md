@@ -37,7 +37,7 @@ Based on [this guide](https://www.yours.org/content/how-to-run-your-own-cash-shu
 3. Back up your seed:
 
     ```bash
-    docker-compose exec bot grep seed "$HOME/.electron-cash/wallets/default_wallet" 
+    docker-compose exec bot grep seed "/home/abc/.electron-cash/wallets/default_wallet"
     ```
 
 4. List some unused addresses:
