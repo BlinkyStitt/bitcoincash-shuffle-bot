@@ -1,0 +1,14 @@
+# no exits
+ExitPolicy reject *:*
+
+DataDirectory /var/lib/tor
+
+# logs are easy to read with `docker logs`
+Log notice stdout
+
+# tor-arm settings
+ControlPort 9051
+CookieAuthentication 1
+DisableDebuggerAttachment 0
+
+# other containers will likely want to add stuff here

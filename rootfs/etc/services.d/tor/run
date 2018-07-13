@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv sh
+# TODO: use a more secure shell
+set -eux
+
+export HOME=/var/lib/tor
+
+2>&1 exec s6-setuidgid tor tor -f /etc/tor/torrc

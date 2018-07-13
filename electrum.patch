@@ -1,0 +1,20 @@
+diff --git a/setup.py b/setup.py
+index 3edf3b41..61ced2cc 100755
+--- a/setup.py
++++ b/setup.py
+@@ -73,7 +73,6 @@ setup(
+         'dnspython',
+         'jsonrpclib-pelix',
+         'PySocks>=1.6.6',
+-        'pyqt5',
+     ],
+     extras_require={
+         'hardware': requirements_hw,
+@@ -90,6 +89,7 @@ setup(
+         'electroncash_plugins.keepkey',
+         'electroncash_plugins.labels',
+         'electroncash_plugins.ledger',
++        'electroncash_plugins.shuffle',
+         'electroncash_plugins.trezor',
+         'electroncash_plugins.digitalbitbox',
+         'electroncash_plugins.virtualkeyboard',

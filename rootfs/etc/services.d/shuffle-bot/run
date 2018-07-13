@@ -1,0 +1,30 @@
+#!/usr/bin/with-contenv bash
+
+set -eux
+
+export HOME=/home/abc
+
+echo "Waiting for Tor..."
+s6-svwait -u /var/run/s6/services/tor
+
+WALLET="$HOME/.electron-cash/wallets/default_wallet"
+
+if [ ! -e "$WALLET" ]; then
+  echo "Creating wallet. Be sure to back it up!"
+  create_wallet.exp >/dev/null
+fi
+
+exec s6-setuidgid abc \
+  electron-cash listaddresses --unused
+
+cd /opt/electrum/plugins/shuffle
+exec s6-setuidgid abc \
+  torsocks \
+  python ./bot.py \
+    --ssl -S shuffle.imaginary.cash \
+    -P 8080 \
+    -I 8081 \
+    -W "$WALLET" \
+    -T 1 \
+    -M 2 \
+;

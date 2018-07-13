@@ -1,0 +1,2 @@
+# path                   recurse  account                fmode  dmode
+/var/lib/tor             true     tor:root               0600   0700
