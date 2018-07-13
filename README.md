@@ -2,6 +2,8 @@
 
 Based on [this guide](https://www.yours.org/content/how-to-run-your-own-cash-shuffle-liquidity-bot--in-9-sorta-simple-step-2d991b4e4d2c).
 
+**IMPORTANT!** This is brand new and barely tested. Do not use large amounts with this yet!
+
 1. Create `~/docker/bitcoincash-shuffle/docker-compose.yml`:
 
     ```yaml
@@ -16,8 +18,8 @@ Based on [this guide](https://www.yours.org/content/how-to-run-your-own-cash-shu
         image: bwstitt/bitcoincash-shuffle-bot
         restart: always
         volumes:
-          - tor_var:/var/lib/tor
           - electron_cash_data:/home/abc/.electron-cash      
+          - tor_var:/var/lib/tor
     ```
 
 2. Run all `docker-compose` commands from next to your docker-compose.yml:
