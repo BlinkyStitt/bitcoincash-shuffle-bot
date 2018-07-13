@@ -1,0 +1,2 @@
+# path                   recurse  account                fmode  dmode
+/home/abc/.electron-cash true     abc:abc                0600   0700

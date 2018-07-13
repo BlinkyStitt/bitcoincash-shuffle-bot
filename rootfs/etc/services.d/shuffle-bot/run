@@ -11,10 +11,16 @@ WALLET="$HOME/.electron-cash/wallets/default_wallet"
 
 if [ ! -e "$WALLET" ]; then
   echo "Creating wallet. Be sure to back it up!"
-  create_wallet.exp >/dev/null
+  s6-setuidgid abc \
+    create_wallet.exp >/dev/null
+
+  if [ ! -e "$WALLET" ]; then
+    echo "Something went wrong!"
+    exit 1
+  fi
 fi
 
-exec s6-setuidgid abc \
+s6-setuidgid abc \
   electron-cash listaddresses --unused
 
 cd /opt/electrum/plugins/shuffle
