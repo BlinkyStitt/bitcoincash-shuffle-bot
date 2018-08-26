@@ -77,7 +77,7 @@ ENV SHUFFLE_PLUGIN_SHA256SUM=274bb7bf774cb88ed4359055e7d98f4e8473e1883b8847cc13a
 RUN { set -eux; \
     \
     cd /opt; \
-    curl -fSL -o shuffle-plugin.tgz https://github.com/cashshuffle/cashshuffle-electron-cash-plugin/archive/v${SHUFFLE_PLUGIN_VERSION}.tar.gz; \
+    curl -fSL -o shuffle-plugin.tgz https://github.com/cashshuffle/cashshuffle-electron-cash-plugin/archive/${SHUFFLE_PLUGIN_VERSION}.tar.gz; \
     echo "$SHUFFLE_PLUGIN_SHA256SUM  shuffle-plugin.tgz" | sha256sum -c -; \
     tar -zxvf shuffle-plugin.tgz; \
     rm shuffle-plugin.tgz; \
