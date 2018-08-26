@@ -48,6 +48,7 @@ RUN { set -eux; \
 ENV HOME /home/abc
 
 # create a virtualenv so we can avoid pip installing to the system install
+# we use system site packages for qt
 ENV PATH /pyenv/bin:$PATH
 RUN { set -eux; \
     \
@@ -57,8 +58,8 @@ RUN { set -eux; \
 }
 
 # download electrum
-ENV ELECTRUM_VERSION=3.3
-ENV ELECTRUM_SHA256SUM=92df7f89321cda8f6d886c203298daa1bf8463ff25a5d58b93907579d181f7f8
+ENV ELECTRUM_VERSION=3.3.1
+ENV ELECTRUM_SHA256SUM=da77a5a66561679bd547c52b9f9028259f9a6b36046538e8a18dd26b858db9df
 RUN { set -eux; \
     \
     mkdir /opt; \
@@ -71,8 +72,8 @@ RUN { set -eux; \
 }
 
 # download cashshuffle electron cash plugin
-ENV SHUFFLE_PLUGIN_VERSION=0.4.0
-ENV SHUFFLE_PLUGIN_SHA256SUM=63a2ecfcbb4f8b9a10e460cd54f76f8d2ba5c536d935707dd39da8a1cdf6f094
+ENV SHUFFLE_PLUGIN_VERSION=0.4.1
+ENV SHUFFLE_PLUGIN_SHA256SUM=274bb7bf774cb88ed4359055e7d98f4e8473e1883b8847cc13ad8ff824e40ea2
 RUN { set -eux; \
     \
     cd /opt; \
