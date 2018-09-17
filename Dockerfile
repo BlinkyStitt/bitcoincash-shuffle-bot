@@ -25,7 +25,7 @@ RUN apk add --no-cache \
 
 # https://github.com/just-containers/s6-overlay/releases
 ENV S6_GPGKEY=DB301BA3F6F807E0D0E6CCB86101B2783B2FD161
-ENV S6_VERSION=1.21.4.0
+ENV S6_VERSION=1.21.7.0
 RUN { set -eux; \
     \
     cd /tmp; \
@@ -57,7 +57,7 @@ RUN { set -eux; \
     chroot --userspec=abc / python3.6 -m venv /pyenv --system-site-packages; \
 }
 
-# download electrum
+# download electrum (electron cash)
 ENV ELECTRUM_VERSION=3.3.1
 ENV ELECTRUM_SHA256SUM=da77a5a66561679bd547c52b9f9028259f9a6b36046538e8a18dd26b858db9df
 RUN { set -eux; \
