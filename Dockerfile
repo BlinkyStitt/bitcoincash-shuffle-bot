@@ -1,4 +1,4 @@
-FROM python:3.6-alpine3.7
+FROM python:3.6-alpine3.8
 
 VOLUME /home/abc/.electron-cash /var/lib/tor
 
@@ -47,6 +47,9 @@ RUN { set -eux; \
 }
 ENV HOME /home/abc
 
+# we need pip.conf before using pip
+COPY pip.conf /etc/
+
 # create a virtualenv so we can avoid pip installing to the system install
 # we use system site packages for qt
 ENV PATH /pyenv/bin:$PATH
@@ -84,9 +87,6 @@ RUN { set -eux; \
     cd electrum/plugins; \
     ln -sfv "../../cashshuffle-electron-cash-plugin-${SHUFFLE_PLUGIN_VERSION}/shuffle"; \
 }
-
-# we need pip.conf before pip installing
-COPY pip.conf /etc/
 
 # Tor monitor
 RUN chroot --userspec=abc / pip install nyx
