@@ -60,6 +60,10 @@ RUN { set -eux; \
     chroot --userspec=abc / python3.6 -m venv /pyenv --system-site-packages; \
 }
 
+# Tor monitor
+# TODO: put this in a seperate virtualenv
+RUN chroot --userspec=abc / pip install nyx
+
 # download electrum (electron cash)
 ENV ELECTRUM_VERSION=3.3.1
 ENV ELECTRUM_SHA256SUM=da77a5a66561679bd547c52b9f9028259f9a6b36046538e8a18dd26b858db9df
@@ -75,8 +79,8 @@ RUN { set -eux; \
 }
 
 # download cashshuffle electron cash plugin
-ENV SHUFFLE_PLUGIN_VERSION=0.4.1
-ENV SHUFFLE_PLUGIN_SHA256SUM=274bb7bf774cb88ed4359055e7d98f4e8473e1883b8847cc13ad8ff824e40ea2
+ENV SHUFFLE_PLUGIN_VERSION=0.5.1
+ENV SHUFFLE_PLUGIN_SHA256SUM=6a24de0d3f09b5b20f6a837c50a8b88564a670a6913da5cf0024ca5e6e2d5c93
 RUN { set -eux; \
     \
     cd /opt; \
@@ -87,9 +91,6 @@ RUN { set -eux; \
     cd electrum/plugins; \
     ln -sfv "../../cashshuffle-electron-cash-plugin-${SHUFFLE_PLUGIN_VERSION}/shuffle"; \
 }
-
-# Tor monitor
-RUN chroot --userspec=abc / pip install nyx
 
 # install electron cash
 COPY electrum.patch /opt/electrum/
